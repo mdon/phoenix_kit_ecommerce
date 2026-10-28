@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
-## Unreleased
+## 0.8.0 - 2026-10-27
 
 ### Added
 
@@ -12,6 +12,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - **The module now tells core's orphan-file check which of its rows point at a stored file** (`file_references/0`, in `FileReferences`): `phoenix_kit_shop_products`, `phoenix_kit_shop_categories`. The SQL moved here verbatim from core's `PhoenixKit.Modules.Storage`; a test compares it with core's own copy. Core reads the callback from the first release after 2.64.1; before that, core's own list stays in force. No migration, no change in what counts as an orphan.
 
 ### Changed
+
+- **Core pin widened to `>= 2.65.0 and < 4.0.0`:** works with core 3.x (core 3.0 stops creating the module tables; this module's own chain builds its tables). The floor is the first core with the `file_references/0` and `expected_schema/0` callbacks, which now carry `@impl PhoenixKit.Module`.
 
 - **Migration V6**: adds `phoenix_kit_shop_carts.base_currency` / `.exchange_rate`
   and `phoenix_kit_shop_cart_items.base_unit_price` (`ADD COLUMN IF NOT EXISTS`),
